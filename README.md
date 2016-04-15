@@ -47,4 +47,4 @@ con la dirección de correo destino y el contenido del mensaje MIME tal como se 
 
 ## Más información
 
-Se puede ver más información en http://ant2e6.webs-interesantes.es/Codigo-fuente/Servidor-SMTP/Servidor-SMTP.htm
+Más información en http://ant2e6.webs-interesantes.es/Codigo-fuente/Servidor-SMTP/Servidor-SMTP.htm
