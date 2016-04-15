@@ -44,3 +44,7 @@ Por último, cuando ya no necesitemos el servidor, lo desconectamos llamando al 
 
 Los archivos almacenados con los mensajes contienen una línea con la dirección de correo origen, una segunda línea
 con la dirección de correo destino y el contenido del mensaje MIME tal como se ha recibido del cliente.
+
+## Más información
+
+Se puede ver más información en http://ant2e6.webs-interesantes.es/Codigo-fuente/Servidor-SMTP/Servidor-SMTP.htm
