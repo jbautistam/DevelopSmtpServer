@@ -42,8 +42,7 @@ Por último, cuando ya no necesitemos el servidor, lo desconectamos llamando al 
   
 ## Formato de los mensajes almacenados
 
-Los archivos almacenados con los mensajes contienen una línea con la dirección de correo origen, una segunda línea
-con la dirección de correo destino y el contenido del mensaje MIME tal como se ha recibido del cliente.
+Los archivos almacenados contienen el contenido del mensaje MIME tal como se ha recibido del cliente.
 
 ## Más información
 
