@@ -29,6 +29,8 @@ namespace Bau.Libraries.LibSmtpServer.Receiver
 					MailFrom,
 					/// <summary>Destinatario del mensaje</summary>
 					MailTo,
+					/// <summary>Descarta el mensaje</summary>
+					Reset,
 					/// <summary>Fin de comunicación</summary>
 					Quit,
 					/// <summary>Mensaje NOOP</summary>
@@ -87,6 +89,8 @@ namespace Bau.Libraries.LibSmtpServer.Receiver
 		/// </summary>
 		private void HandleClient(TcpClient objTcpClient)
 		{ string strIPClient = objTcpClient.Client.RemoteEndPoint.ToString(); // ... para poder utilizarlo al salir (cuando ya TCPClient se ha liberado)
+			MessageWriter objWriter = new MessageWriter();
+			bool blnReset = false;
 
 				// Log
 					AddLog("Cliente conectado", "IP cliente: " + strIPClient);
@@ -95,7 +99,6 @@ namespace Bau.Libraries.LibSmtpServer.Receiver
 						{ using (System.IO.StreamReader stmReader = new System.IO.StreamReader(stmNetwork))
 								{ bool blnIsEnd = false, blnIsData = false;
 									string strPreviousLine = "";
-									MessageWriter objWriter = new MessageWriter();
 
 										// Crea el generador de archivo
 											objWriter.Create(Server.PathEMailsToSend);
@@ -114,7 +117,7 @@ namespace Bau.Libraries.LibSmtpServer.Receiver
 																	break;
 																case LineType.Quit:
 																		blnIsEnd = true;
-																		WriteOk(stmNetwork);
+																		Write(stmNetwork, "221 DevelopSMTP Service closing transmission channel");
 																	break;
 																case LineType.StartData:
 																		blnIsData = true;
@@ -128,11 +131,15 @@ namespace Bau.Libraries.LibSmtpServer.Receiver
 																		WriteOk(stmNetwork);
 																	break;
 																case LineType.MailFrom:
-																		objWriter.WriteFrom(GetEMail(cnstStrEMailFrom, strLine));
+																		objWriter.From = GetEMail(cnstStrEMailFrom, strLine);
 																		WriteOk(stmNetwork);
 																	break;
 																case LineType.MailTo:
-																		objWriter.WriteTo(GetEMail(cnstStrEMailTo, strLine));
+																		objWriter.To = GetEMail(cnstStrEMailTo, strLine);
+																		WriteOk(stmNetwork);
+																	break;
+																case LineType.Reset:
+																		blnReset = true;
 																		WriteOk(stmNetwork);
 																	break;
 																case LineType.Unknown:
@@ -161,6 +168,11 @@ namespace Bau.Libraries.LibSmtpServer.Receiver
 											objWriter.Dispose();
 								}
 						}
+				// Si se ha hecho un Reset, se elimina el archivo
+					if (blnReset)
+						objWriter.Delete();
+					else
+						Server.RaiseEventReceived(objWriter.FileName);
 				// Log
 					AddLog("Cliente desconectado", "IP cliente: " + strIPClient);
 		}
@@ -237,6 +249,8 @@ namespace Bau.Libraries.LibSmtpServer.Receiver
 										intType = LineType.Noop;
 									else if (strLine.StartsWith("QUIT", StringComparison.CurrentCultureIgnoreCase))
 										intType = LineType.Quit;
+									else if (strLine.StartsWith("RSET", StringComparison.CurrentCultureIgnoreCase))
+										intType = LineType.Reset;
 									else if (strLine.StartsWith(cnstStrEMailFrom, StringComparison.CurrentCultureIgnoreCase))
 										intType = LineType.MailFrom;
 									else if (strLine.StartsWith(cnstStrEMailTo, StringComparison.CurrentCultureIgnoreCase))

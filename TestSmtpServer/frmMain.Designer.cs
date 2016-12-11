@@ -28,6 +28,7 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
+			this.components = new System.ComponentModel.Container();
 			this.groupBox1 = new System.Windows.Forms.GroupBox();
 			this.fnPathEMails = new Bau.Controls.Files.TextBoxSelectPath();
 			this.txtPort = new System.Windows.Forms.TextBox();
@@ -46,7 +47,14 @@
 			this.tabPage2 = new System.Windows.Forms.TabPage();
 			this.txtLog = new System.Windows.Forms.TextBox();
 			this.tabPage1 = new System.Windows.Forms.TabPage();
+			this.collapsiblePanelSplitter1 = new Bau.Controls.Split.CollapsiblePanelSplitter();
+			this.lswAttachments = new Bau.Controls.List.ListUpdatable();
 			this.tabControl1 = new System.Windows.Forms.TabControl();
+			this.tabPage3 = new System.Windows.Forms.TabPage();
+			this.lswFiles = new Bau.Controls.List.ListViewExtended();
+			this.cmdDeleteFiles = new System.Windows.Forms.Button();
+			this.cmdRefreshFiles = new System.Windows.Forms.Button();
+			this.label9 = new System.Windows.Forms.Label();
 			this.groupBox2 = new System.Windows.Forms.GroupBox();
 			this.cmdService = new System.Windows.Forms.Button();
 			this.cmdConnect = new System.Windows.Forms.Button();
@@ -54,17 +62,16 @@
 			this.cmdConsole = new System.Windows.Forms.Button();
 			this.fnApplication = new Bau.Controls.Files.TextBoxSelectFile();
 			this.label8 = new System.Windows.Forms.Label();
-			this.tabPage3 = new System.Windows.Forms.TabPage();
-			this.lswFiles = new Bau.Controls.List.ListViewExtended();
-			this.cmdRefreshFiles = new System.Windows.Forms.Button();
-			this.cmdDeleteFiles = new System.Windows.Forms.Button();
-			this.label9 = new System.Windows.Forms.Label();
 			this.groupBox1.SuspendLayout();
 			this.tabPage2.SuspendLayout();
 			this.tabPage1.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.collapsiblePanelSplitter1)).BeginInit();
+			this.collapsiblePanelSplitter1.Panel1.SuspendLayout();
+			this.collapsiblePanelSplitter1.Panel2.SuspendLayout();
+			this.collapsiblePanelSplitter1.SuspendLayout();
 			this.tabControl1.SuspendLayout();
-			this.groupBox2.SuspendLayout();
 			this.tabPage3.SuspendLayout();
+			this.groupBox2.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// groupBox1
@@ -153,7 +160,7 @@
 			// cmdSend
 			// 
 			this.cmdSend.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-			this.cmdSend.Location = new System.Drawing.Point(740, 419);
+			this.cmdSend.Location = new System.Drawing.Point(737, 400);
 			this.cmdSend.Name = "cmdSend";
 			this.cmdSend.Size = new System.Drawing.Size(96, 26);
 			this.cmdSend.TabIndex = 3;
@@ -163,14 +170,12 @@
 			// 
 			// txtBody
 			// 
-			this.txtBody.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+			this.txtBody.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.txtBody.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.txtBody.Location = new System.Drawing.Point(17, 88);
+			this.txtBody.Location = new System.Drawing.Point(0, 0);
 			this.txtBody.Multiline = true;
 			this.txtBody.Name = "txtBody";
-			this.txtBody.Size = new System.Drawing.Size(821, 325);
+			this.txtBody.Size = new System.Drawing.Size(436, 308);
 			this.txtBody.TabIndex = 8;
 			this.txtBody.Text = "Cuerpo del mensaje de prueba";
 			// 
@@ -181,7 +186,7 @@
 			this.txtSubject.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.txtSubject.Location = new System.Drawing.Point(89, 60);
 			this.txtSubject.Name = "txtSubject";
-			this.txtSubject.Size = new System.Drawing.Size(749, 20);
+			this.txtSubject.Size = new System.Drawing.Size(746, 20);
 			this.txtSubject.TabIndex = 7;
 			this.txtSubject.Text = "Mensaje de prueba";
 			// 
@@ -192,9 +197,10 @@
 			this.txtEMailTarget.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.txtEMailTarget.Location = new System.Drawing.Point(89, 34);
 			this.txtEMailTarget.Name = "txtEMailTarget";
-			this.txtEMailTarget.Size = new System.Drawing.Size(749, 20);
+			this.txtEMailTarget.Size = new System.Drawing.Size(746, 20);
 			this.txtEMailTarget.TabIndex = 5;
-			this.txtEMailTarget.Text = "target@micro.com";
+			this.txtEMailTarget.Text = "target@micro.com [Nombre del destinatario]; second@micro.com  [Nombre del segundo" +
+    " destinatario];third@micro.com";
 			// 
 			// txtEMailSource
 			// 
@@ -203,9 +209,9 @@
 			this.txtEMailSource.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.txtEMailSource.Location = new System.Drawing.Point(88, 8);
 			this.txtEMailSource.Name = "txtEMailSource";
-			this.txtEMailSource.Size = new System.Drawing.Size(748, 20);
+			this.txtEMailSource.Size = new System.Drawing.Size(745, 20);
 			this.txtEMailSource.TabIndex = 1;
-			this.txtEMailSource.Text = "jbautistam@micro.com";
+			this.txtEMailSource.Text = "sender@micro.com [Nombre del remitente]";
 			// 
 			// label6
 			// 
@@ -246,7 +252,7 @@
 			this.tabPage2.Location = new System.Drawing.Point(4, 22);
 			this.tabPage2.Name = "tabPage2";
 			this.tabPage2.Padding = new System.Windows.Forms.Padding(5);
-			this.tabPage2.Size = new System.Drawing.Size(770, 443);
+			this.tabPage2.Size = new System.Drawing.Size(844, 438);
 			this.tabPage2.TabIndex = 1;
 			this.tabPage2.Text = "Log";
 			this.tabPage2.UseVisualStyleBackColor = true;
@@ -258,13 +264,13 @@
 			this.txtLog.Location = new System.Drawing.Point(5, 5);
 			this.txtLog.Multiline = true;
 			this.txtLog.Name = "txtLog";
-			this.txtLog.Size = new System.Drawing.Size(760, 433);
+			this.txtLog.Size = new System.Drawing.Size(834, 428);
 			this.txtLog.TabIndex = 0;
 			// 
 			// tabPage1
 			// 
+			this.tabPage1.Controls.Add(this.collapsiblePanelSplitter1);
 			this.tabPage1.Controls.Add(this.cmdSend);
-			this.tabPage1.Controls.Add(this.txtBody);
 			this.tabPage1.Controls.Add(this.txtSubject);
 			this.tabPage1.Controls.Add(this.txtEMailTarget);
 			this.tabPage1.Controls.Add(this.txtEMailSource);
@@ -274,10 +280,48 @@
 			this.tabPage1.Location = new System.Drawing.Point(4, 22);
 			this.tabPage1.Name = "tabPage1";
 			this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-			this.tabPage1.Size = new System.Drawing.Size(847, 457);
+			this.tabPage1.Size = new System.Drawing.Size(844, 438);
 			this.tabPage1.TabIndex = 0;
 			this.tabPage1.Text = "Correo";
 			this.tabPage1.UseVisualStyleBackColor = true;
+			// 
+			// collapsiblePanelSplitter1
+			// 
+			this.collapsiblePanelSplitter1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.collapsiblePanelSplitter1.BackColorSplitter = System.Drawing.SystemColors.Control;
+			this.collapsiblePanelSplitter1.CollapseAction = Bau.Controls.Split.CollapsiblePanelSplitter.CollapseMode.CollapsePanel1;
+			this.collapsiblePanelSplitter1.Location = new System.Drawing.Point(7, 86);
+			this.collapsiblePanelSplitter1.Name = "collapsiblePanelSplitter1";
+			// 
+			// collapsiblePanelSplitter1.Panel1
+			// 
+			this.collapsiblePanelSplitter1.Panel1.Controls.Add(this.txtBody);
+			this.collapsiblePanelSplitter1.Panel1MinSize = 0;
+			// 
+			// collapsiblePanelSplitter1.Panel2
+			// 
+			this.collapsiblePanelSplitter1.Panel2.Controls.Add(this.lswAttachments);
+			this.collapsiblePanelSplitter1.Panel2MinSize = 0;
+			this.collapsiblePanelSplitter1.Size = new System.Drawing.Size(826, 308);
+			this.collapsiblePanelSplitter1.SplitterDistance = 436;
+			this.collapsiblePanelSplitter1.SplitterStyle = Bau.Controls.Split.CollapsiblePanelSplitter.VisualStyles.Mozilla;
+			this.collapsiblePanelSplitter1.SplitterWidth = 8;
+			this.collapsiblePanelSplitter1.TabIndex = 10;
+			// 
+			// lswAttachments
+			// 
+			this.lswAttachments.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.lswAttachments.Location = new System.Drawing.Point(0, 0);
+			this.lswAttachments.MultiSelect = true;
+			this.lswAttachments.Name = "lswAttachments";
+			this.lswAttachments.ShowItemToolTips = false;
+			this.lswAttachments.Size = new System.Drawing.Size(382, 308);
+			this.lswAttachments.TabIndex = 9;
+			this.lswAttachments.WithUpdate = false;
+			this.lswAttachments.OnUpdateRecord += new Bau.Controls.List.ListUpdatable.UpdateRecordHandler(this.lswAttachments_OnUpdateRecord);
+			this.lswAttachments.OnDeleteRecord += new Bau.Controls.List.ListUpdatable.DeleteRecordHandler(this.lswAttachments_OnDeleteRecord);
 			// 
 			// tabControl1
 			// 
@@ -290,8 +334,74 @@
 			this.tabControl1.Location = new System.Drawing.Point(9, 205);
 			this.tabControl1.Name = "tabControl1";
 			this.tabControl1.SelectedIndex = 0;
-			this.tabControl1.Size = new System.Drawing.Size(855, 483);
+			this.tabControl1.Size = new System.Drawing.Size(852, 464);
 			this.tabControl1.TabIndex = 2;
+			// 
+			// tabPage3
+			// 
+			this.tabPage3.Controls.Add(this.lswFiles);
+			this.tabPage3.Controls.Add(this.cmdDeleteFiles);
+			this.tabPage3.Controls.Add(this.cmdRefreshFiles);
+			this.tabPage3.Controls.Add(this.label9);
+			this.tabPage3.Location = new System.Drawing.Point(4, 22);
+			this.tabPage3.Name = "tabPage3";
+			this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
+			this.tabPage3.Size = new System.Drawing.Size(844, 438);
+			this.tabPage3.TabIndex = 2;
+			this.tabPage3.Text = "Correos recibidos";
+			this.tabPage3.UseVisualStyleBackColor = true;
+			// 
+			// lswFiles
+			// 
+			this.lswFiles.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.lswFiles.FullRowSelect = true;
+			this.lswFiles.GroupWithColumnDoubleClick = false;
+			this.lswFiles.HideSelection = false;
+			this.lswFiles.Location = new System.Drawing.Point(6, 7);
+			this.lswFiles.Name = "lswFiles";
+			this.lswFiles.SelectedKey = null;
+			this.lswFiles.Size = new System.Drawing.Size(827, 388);
+			this.lswFiles.SortWithColumnClick = false;
+			this.lswFiles.TabIndex = 0;
+			this.lswFiles.UseCompatibleStateImageBehavior = false;
+			this.lswFiles.View = System.Windows.Forms.View.Details;
+			this.lswFiles.ItemDoubleClick += new Bau.Controls.List.ListViewExtended.ItemDoubleClickHandler(this.lswFiles_ItemDoubleClick);
+			// 
+			// cmdDeleteFiles
+			// 
+			this.cmdDeleteFiles.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+			this.cmdDeleteFiles.Location = new System.Drawing.Point(112, 404);
+			this.cmdDeleteFiles.Name = "cmdDeleteFiles";
+			this.cmdDeleteFiles.Size = new System.Drawing.Size(96, 26);
+			this.cmdDeleteFiles.TabIndex = 2;
+			this.cmdDeleteFiles.Text = "Borrar";
+			this.cmdDeleteFiles.UseVisualStyleBackColor = true;
+			this.cmdDeleteFiles.Click += new System.EventHandler(this.cmdDeleteFiles_Click);
+			// 
+			// cmdRefreshFiles
+			// 
+			this.cmdRefreshFiles.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+			this.cmdRefreshFiles.Location = new System.Drawing.Point(10, 404);
+			this.cmdRefreshFiles.Name = "cmdRefreshFiles";
+			this.cmdRefreshFiles.Size = new System.Drawing.Size(96, 26);
+			this.cmdRefreshFiles.TabIndex = 1;
+			this.cmdRefreshFiles.Text = "Actualizar";
+			this.cmdRefreshFiles.UseVisualStyleBackColor = true;
+			this.cmdRefreshFiles.Click += new System.EventHandler(this.cmdRefreshFiles_Click);
+			// 
+			// label9
+			// 
+			this.label9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+			this.label9.AutoSize = true;
+			this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.label9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+			this.label9.Location = new System.Drawing.Point(227, 411);
+			this.label9.Name = "label9";
+			this.label9.Size = new System.Drawing.Size(271, 13);
+			this.label9.TabIndex = 3;
+			this.label9.Text = "Pulse dos veces sobre el nombre de archivo para abrirlo";
 			// 
 			// groupBox2
 			// 
@@ -391,77 +501,11 @@
 			this.label8.TabIndex = 0;
 			this.label8.Text = "Aplicación:";
 			// 
-			// tabPage3
-			// 
-			this.tabPage3.Controls.Add(this.lswFiles);
-			this.tabPage3.Controls.Add(this.cmdDeleteFiles);
-			this.tabPage3.Controls.Add(this.cmdRefreshFiles);
-			this.tabPage3.Controls.Add(this.label9);
-			this.tabPage3.Location = new System.Drawing.Point(4, 22);
-			this.tabPage3.Name = "tabPage3";
-			this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-			this.tabPage3.Size = new System.Drawing.Size(763, 401);
-			this.tabPage3.TabIndex = 2;
-			this.tabPage3.Text = "Correos recibidos";
-			this.tabPage3.UseVisualStyleBackColor = true;
-			// 
-			// lswFiles
-			// 
-			this.lswFiles.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-			this.lswFiles.FullRowSelect = true;
-			this.lswFiles.GroupWithColumnDoubleClick = false;
-			this.lswFiles.HideSelection = false;
-			this.lswFiles.Location = new System.Drawing.Point(6, 7);
-			this.lswFiles.Name = "lswFiles";
-			this.lswFiles.SelectedKey = null;
-			this.lswFiles.Size = new System.Drawing.Size(747, 353);
-			this.lswFiles.SortWithColumnClick = false;
-			this.lswFiles.TabIndex = 0;
-			this.lswFiles.UseCompatibleStateImageBehavior = false;
-			this.lswFiles.View = System.Windows.Forms.View.Details;
-			this.lswFiles.ItemDoubleClick += new Bau.Controls.List.ListViewExtended.ItemDoubleClickHandler(this.lswFiles_ItemDoubleClick);
-			// 
-			// cmdRefreshFiles
-			// 
-			this.cmdRefreshFiles.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-			this.cmdRefreshFiles.Location = new System.Drawing.Point(6, 366);
-			this.cmdRefreshFiles.Name = "cmdRefreshFiles";
-			this.cmdRefreshFiles.Size = new System.Drawing.Size(96, 26);
-			this.cmdRefreshFiles.TabIndex = 1;
-			this.cmdRefreshFiles.Text = "Actualizar";
-			this.cmdRefreshFiles.UseVisualStyleBackColor = true;
-			this.cmdRefreshFiles.Click += new System.EventHandler(this.cmdRefreshFiles_Click);
-			// 
-			// cmdDeleteFiles
-			// 
-			this.cmdDeleteFiles.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-			this.cmdDeleteFiles.Location = new System.Drawing.Point(108, 366);
-			this.cmdDeleteFiles.Name = "cmdDeleteFiles";
-			this.cmdDeleteFiles.Size = new System.Drawing.Size(96, 26);
-			this.cmdDeleteFiles.TabIndex = 2;
-			this.cmdDeleteFiles.Text = "Borrar";
-			this.cmdDeleteFiles.UseVisualStyleBackColor = true;
-			this.cmdDeleteFiles.Click += new System.EventHandler(this.cmdDeleteFiles_Click);
-			// 
-			// label9
-			// 
-			this.label9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-			this.label9.AutoSize = true;
-			this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-			this.label9.Location = new System.Drawing.Point(223, 373);
-			this.label9.Name = "label9";
-			this.label9.Size = new System.Drawing.Size(271, 13);
-			this.label9.TabIndex = 3;
-			this.label9.Text = "Pulse dos veces sobre el nombre de archivo para abrirlo";
-			// 
 			// frmMain
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(869, 692);
+			this.ClientSize = new System.Drawing.Size(869, 677);
 			this.Controls.Add(this.tabControl1);
 			this.Controls.Add(this.groupBox2);
 			this.Controls.Add(this.groupBox1);
@@ -476,11 +520,16 @@
 			this.tabPage2.PerformLayout();
 			this.tabPage1.ResumeLayout(false);
 			this.tabPage1.PerformLayout();
+			this.collapsiblePanelSplitter1.Panel1.ResumeLayout(false);
+			this.collapsiblePanelSplitter1.Panel1.PerformLayout();
+			this.collapsiblePanelSplitter1.Panel2.ResumeLayout(false);
+			((System.ComponentModel.ISupportInitialize)(this.collapsiblePanelSplitter1)).EndInit();
+			this.collapsiblePanelSplitter1.ResumeLayout(false);
 			this.tabControl1.ResumeLayout(false);
-			this.groupBox2.ResumeLayout(false);
-			this.groupBox2.PerformLayout();
 			this.tabPage3.ResumeLayout(false);
 			this.tabPage3.PerformLayout();
+			this.groupBox2.ResumeLayout(false);
+			this.groupBox2.PerformLayout();
 			this.ResumeLayout(false);
 
 		}
@@ -518,6 +567,8 @@
 		private System.Windows.Forms.Button cmdDeleteFiles;
 		private System.Windows.Forms.Button cmdRefreshFiles;
 		private System.Windows.Forms.Label label9;
+		private Bau.Controls.List.ListUpdatable lswAttachments;
+		private Bau.Controls.Split.CollapsiblePanelSplitter collapsiblePanelSplitter1;
 	}
 }
 

@@ -1,4 +1,4 @@
-﻿namespace DevelopSmptServer
+﻿namespace DevelopSmtpServer
 {
 	partial class ServiceSmtp
 	{

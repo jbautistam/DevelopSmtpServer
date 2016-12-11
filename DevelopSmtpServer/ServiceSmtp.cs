@@ -3,7 +3,7 @@ using System.ServiceProcess;
 
 using Bau.Libraries.LibSmtpServer;
 
-namespace DevelopSmptServer
+namespace DevelopSmtpServer
 {
 	/// <summary>
 	///		Servicio SMTP

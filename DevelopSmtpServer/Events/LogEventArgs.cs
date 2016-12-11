@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace DevelopSmptServer.Events
+namespace DevelopSmtpServer.Events
 {
 	/// <summary>
 	///		Argumentos de los eventos de log

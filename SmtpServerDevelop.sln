@@ -1,17 +1,25 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.25123.0
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibSmtpServer", "LibSmtpServer\LibSmtpServer.csproj", "{86496BF3-8AB1-4C7F-9F69-397FA1AF3EB9}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestSmtpServer", "TestSmtpServer\TestSmtpServer.csproj", "{152F9AEA-D4BA-4408-B94C-6B37C657B4DA}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibHelper", "LibHelper\LibHelper.csproj", "{D9E2DC6B-3E54-421F-9231-A4F3A799BC4C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BauControls", "BauControls\BauControls.csproj", "{F62C525C-5A46-46E1-BD18-450ACAF06E26}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevelopSmptServer", "DevelopSmptServer\DevelopSmptServer.csproj", "{2F0B8B16-E232-46CA-9A13-EFCDFBA43886}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Controls", "Controls", "{04F34AE2-ED7D-46F5-8DC9-B81865840729}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SmtpServer", "SmtpServer", "{BF6F1273-A509-4152-A79E-CC0281D837C6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Libraries", "Libraries", "{70B938FF-941C-4C21-A8F0-32589DD8C476}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevelopSmtpServer", "DevelopSmtpServer\DevelopSmtpServer.csproj", "{2F0B8B16-E232-46CA-9A13-EFCDFBA43886}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BauDevelopSmtpServer", "BauDevelopSmtpServer\BauDevelopSmtpServer.csproj", "{9D2BD169-4629-4854-A0F9-E3BF2EF92B4A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestSmtpServer", "TestSmtpServer\TestSmtpServer.csproj", "{152F9AEA-D4BA-4408-B94C-6B37C657B4DA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,10 +31,6 @@ Global
 		{86496BF3-8AB1-4C7F-9F69-397FA1AF3EB9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{86496BF3-8AB1-4C7F-9F69-397FA1AF3EB9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{86496BF3-8AB1-4C7F-9F69-397FA1AF3EB9}.Release|Any CPU.Build.0 = Release|Any CPU
-		{152F9AEA-D4BA-4408-B94C-6B37C657B4DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{152F9AEA-D4BA-4408-B94C-6B37C657B4DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{152F9AEA-D4BA-4408-B94C-6B37C657B4DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{152F9AEA-D4BA-4408-B94C-6B37C657B4DA}.Release|Any CPU.Build.0 = Release|Any CPU
 		{D9E2DC6B-3E54-421F-9231-A4F3A799BC4C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{D9E2DC6B-3E54-421F-9231-A4F3A799BC4C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D9E2DC6B-3E54-421F-9231-A4F3A799BC4C}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -39,8 +43,23 @@ Global
 		{2F0B8B16-E232-46CA-9A13-EFCDFBA43886}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2F0B8B16-E232-46CA-9A13-EFCDFBA43886}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2F0B8B16-E232-46CA-9A13-EFCDFBA43886}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9D2BD169-4629-4854-A0F9-E3BF2EF92B4A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9D2BD169-4629-4854-A0F9-E3BF2EF92B4A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9D2BD169-4629-4854-A0F9-E3BF2EF92B4A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9D2BD169-4629-4854-A0F9-E3BF2EF92B4A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{152F9AEA-D4BA-4408-B94C-6B37C657B4DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{152F9AEA-D4BA-4408-B94C-6B37C657B4DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{152F9AEA-D4BA-4408-B94C-6B37C657B4DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{152F9AEA-D4BA-4408-B94C-6B37C657B4DA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{86496BF3-8AB1-4C7F-9F69-397FA1AF3EB9} = {BF6F1273-A509-4152-A79E-CC0281D837C6}
+		{D9E2DC6B-3E54-421F-9231-A4F3A799BC4C} = {70B938FF-941C-4C21-A8F0-32589DD8C476}
+		{F62C525C-5A46-46E1-BD18-450ACAF06E26} = {04F34AE2-ED7D-46F5-8DC9-B81865840729}
+		{2F0B8B16-E232-46CA-9A13-EFCDFBA43886} = {BF6F1273-A509-4152-A79E-CC0281D837C6}
+		{9D2BD169-4629-4854-A0F9-E3BF2EF92B4A} = {BF6F1273-A509-4152-A79E-CC0281D837C6}
 	EndGlobalSection
 EndGlobal

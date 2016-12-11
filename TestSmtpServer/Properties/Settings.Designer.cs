@@ -70,5 +70,65 @@ namespace TestSmtpServer.Properties {
                 this["FileNameApplication"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string From {
+            get {
+                return ((string)(this["From"]));
+            }
+            set {
+                this["From"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string To {
+            get {
+                return ((string)(this["To"]));
+            }
+            set {
+                this["To"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string Subject {
+            get {
+                return ((string)(this["Subject"]));
+            }
+            set {
+                this["Subject"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string Body {
+            get {
+                return ((string)(this["Body"]));
+            }
+            set {
+                this["Body"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string Attachments {
+            get {
+                return ((string)(this["Attachments"]));
+            }
+            set {
+                this["Attachments"] = value;
+            }
+        }
     }
 }

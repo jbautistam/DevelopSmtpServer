@@ -36,7 +36,7 @@ namespace Bau.Libraries.LibSmtpServer
 				{ // Desconecta el listener
 						Listener.Disconnect();
 					// Log
-						RaiseEventLog("Desconesión", "Desconectado");
+						RaiseEventLog("Desconexión", "Desconectado");
 				}
 		}
 
@@ -44,8 +44,14 @@ namespace Bau.Libraries.LibSmtpServer
 		///		Lanza un evento de log
 		/// </summary>
 		internal void RaiseEventLog(string strAction, string strMessage)
-		{ if (ServerLog != null)
-				ServerLog(this, new ServerEvents.SmtpServerLogEventArgs(strAction, strMessage));
+		{	ServerLog?.Invoke(this, new ServerEvents.SmtpServerLogEventArgs(strAction, strMessage));
+		}
+
+		/// <summary>
+		///		lanza el evento de recepción
+		/// </summary>
+		internal void RaiseEventReceived(string strFileName)
+		{ ServerLog?.Invoke(this, new ServerEvents.SmtpServerLogEventArgs("Received", strFileName));
 		}
 
 		/// <summary>

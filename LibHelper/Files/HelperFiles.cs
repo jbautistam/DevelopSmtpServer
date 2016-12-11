@@ -446,6 +446,32 @@ namespace Bau.Libraries.LibHelper.Files
 		}
 		
 		/// <summary>
+		///		Ejecuta una aplicación en el shell y obtiene los resultados
+		/// </summary>
+		public static void ExecuteShell(string strExecutable, string strParameters, out string strOutput, out string strErrors)
+		{ ProcessStartInfo objProcessStart = new ProcessStartInfo(strExecutable, strParameters);
+			Process objProcess;
+
+				// Inicializa los argumentos de salida
+					strOutput = "";
+					strErrors = "";
+				// Inicializa el proceso
+          objProcessStart.RedirectStandardOutput = true;
+          objProcessStart.RedirectStandardError = true;
+          objProcessStart.WindowStyle = System.Diagnostics.ProcessWindowStyle.Normal;
+          objProcessStart.UseShellExecute = false;
+				// Ejecuta el proceso            
+            objProcess = Process.Start(objProcessStart);
+				// Obtiene los resultados
+          using (StreamReader stmOutput = objProcess.StandardOutput)
+						{	strOutput = stmOutput.ReadToEnd();
+						}
+          using (StreamReader stmError = objProcess.StandardError)
+						{	strErrors = stmError.ReadToEnd();
+						}
+		}  
+
+		/// <summary>
 		///		Abre el documento utilizando el shell
 		/// </summary>
 		public static void OpenDocumentShell(string strFileName)

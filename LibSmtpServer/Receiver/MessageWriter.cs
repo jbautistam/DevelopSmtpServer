@@ -11,48 +11,57 @@ namespace Bau.Libraries.LibSmtpServer.Receiver
 		///		Crea un mensaje
 		/// </summary>
 		internal void Create(string strPath)
-		{ string strFileName = GetFileName(strPath);
-
-				// Crea el directorio
-					System.IO.Directory.CreateDirectory(System.IO.Path.GetDirectoryName(strFileName));
-				// Abre el stream de escritura
-					Writer = new System.IO.StreamWriter(strFileName, false, System.Text.ASCIIEncoding.ASCII);
-				// Indica que está abierto
-					IsDisposed = false;
+		{ Path = strPath;
 		}
 
 		/// <summary>
 		///		Obtiene el nombre de archivo
 		/// </summary>
 		private string GetFileName(string strPath)
-		{ string strFileName = System.IO.Path.Combine(strPath, string.Format("{0:yyyy-MM-dd}", DateTime.Now));
-
+		{ string strFileName;
+		
+				// Crea el nombre de archivo: Path + From + Date + To
+					strFileName = System.IO.Path.Combine(strPath, string.Format("{0:yyyy-MM-dd}", DateTime.Now));
+					strFileName = System.IO.Path.Combine(strFileName, From);
 				// Añade el nombre de archivo
-					strFileName = System.IO.Path.Combine(strFileName, Guid.NewGuid().ToString() + ".msg");
+					strFileName = System.IO.Path.Combine(strFileName, $"{DateTime.Now:HH_mm_ss_ms}#{To}.msg");
 				// Devuelve el nombre de archivo
 					return strFileName;
 		}
 
 		/// <summary>
-		///		Escribe el correo origen
+		///		Borra el archivo
 		/// </summary>
-		internal void WriteFrom(string strEMail)
-		{ Write("FROM: " + strEMail);
-		}
-
-		/// <summary>
-		///		Escribe el correo destino
-		/// </summary>
-		internal void WriteTo(string strEMail)
-		{ Write("TO: " + strEMail);
+		public void Delete()
+		{ try
+				{ // Cierra el stream
+						Close();
+					// Borra el archivo
+						System.IO.File.Delete(FileName);
+				}
+			catch (Exception objException)
+				{ System.Diagnostics.Debug.WriteLine("Excepción de borrado: " + objException.Message);
+				}
 		}
 
 		/// <summary>
 		///		Escribe un mensaje
 		/// </summary>
 		internal void Write(string strMessage)
-		{ if (Writer != null)
-				Writer.Write(strMessage + "\r\n");
+		{ // Abre el stream de escritura si es necesario
+				if (!IsDisposed && Writer == null && !string.IsNullOrEmpty(From) && !string.IsNullOrEmpty(To))
+					{ // Genera el nombre de archivo
+							FileName = GetFileName(Path);
+						// Crea el directorio
+							System.IO.Directory.CreateDirectory(System.IO.Path.GetDirectoryName(FileName));
+						// Abre el stream de escritura
+							Writer = new System.IO.StreamWriter(FileName, false, System.Text.ASCIIEncoding.ASCII);
+						// Indica que está abierto
+							IsDisposed = false;
+					}
+			// Escribe el mensaje
+				if (!IsDisposed && Writer != null)
+					Writer.Write(strMessage + "\r\n");
 		}
 
 		/// <summary>
@@ -96,7 +105,27 @@ namespace Bau.Libraries.LibSmtpServer.Receiver
 		/// <summary>
 		///		Stream de escritura
 		/// </summary>
-		private System.IO.StreamWriter Writer { get; set; }
+		private System.IO.StreamWriter Writer { get; set; } = null;
+
+		/// <summary>
+		///		Directorio inicial donde se almacenan los archivos
+		/// </summary>
+		internal string Path { get; private set; }
+
+		/// <summary>
+		///		Nombre de archivo
+		/// </summary>
+		internal string FileName { get; private set; }
+
+		/// <summary>
+		///		Dirección de correo del remitente
+		/// </summary>
+		internal string From { get; set; }
+
+		/// <summary>
+		///		Dirección de correo del destinatario
+		/// </summary>
+		internal string To { get; set; }
 
 		/// <summary>
 		///		Indica si se ha cerrado el stream (para evitar llamadas reentrantes)
